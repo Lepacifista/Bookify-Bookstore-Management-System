@@ -50,15 +50,42 @@ Before running the application, ensure you have:
 - MySQL Connector/J.
 - IntelliJ IDEA or another Java IDE.
 
-## Database Setup
+## Database Setup and Importation
 
-1. Start your MySQL server.
-2. Open MySQL Workbench.
-3. Open the `bookstore_db.sql` file.
-4. Execute the SQL script to create the database and its tables.
-5. Verify that the `bookstore_db` database has been created successfully.
+The project includes a MySQL database structure file named `bookstore_db.sql` in the root directory.
 
-**Note:** The provided SQL file contains the database structure only. It does not include the original administrator account or sample records.
+Follow these steps to import the database:
+
+1. Install and start MySQL Server.
+2. Open MySQL Workbench and connect to your local MySQL server.
+3. Go to **File → Open SQL Script**.
+4. Browse to the downloaded project folder and select `bookstore_db.sql`.
+5. Click the Execute button (lightning bolt icon) to run the script.
+6. Refresh the Schemas panel and confirm that `bookstore_db` has been created.
+7. Expand the database and verify that the required tables are available.
+
+Alternatively, the database can be imported using the MySQL command line:
+
+```bash
+mysql -u root -p < bookstore_db.sql
+```
+
+Enter your own MySQL password when prompted.
+
+### Administrator Account Setup
+
+The SQL file contains the database structure only. After importing it, create an administrator account using:
+
+```sql
+USE bookstore_db;
+
+INSERT INTO users (username, password, role)
+VALUES ('admin', 'your_admin_password', 'Administrator');
+```
+
+Replace `your_admin_password` with your preferred password.
+
+**Note:** The application uses its current password-handling implementation for this academic project. Do not use real or reused passwords.
 
 ## Database Connection
 
