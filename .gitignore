@@ -46,3 +46,5 @@ bin/
 
 # Database backups
 *.sql
+
+!bookstore_db.sql
